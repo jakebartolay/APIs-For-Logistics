@@ -19,9 +19,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+///GETTING USER USING API
 Route::get('users',[UserController::class,'index']);
-Route::post('users',[UserController::class,'post']);
-Route::put('users',[UserController::class,'put']);
-Route::delete('users',[UserController::class,'delet']);
+///
 
+///CREATE USER USING API
+Route::post('users',[UserController::class,'upload']);
+///
+
+///EDIT USER USING API
+Route::put('users/edit/{id}',[UserController::class,'edit']);
+///
+
+///DELETE USER USING API
+Route::delete('users/edit/{id}',[UserController::class,'delete']);
+///
 

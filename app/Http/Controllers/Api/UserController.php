@@ -117,4 +117,53 @@ class UserController extends Controller
         ];
         return response()->json($data, 200);        
     }
+
+    public function patch(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            $data = [
+                'status' => 404,
+                'message' => 'User not found'
+            ];
+            return response()->json($data, 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'string',
+            'email' => 'email',
+            'password' => 'string' // You might want to add more validation rules for password
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                "status" => 422,
+                "message" => $validator->messages()
+            ];
+            return response()->json($data, 422);
+        }
+
+        // Update only the provided fields
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+
+        $data = [
+            'status' => 200,
+            'message' => 'Data updated successfully'
+        ];
+        return response()->json($data, 200);
+    }
+
 }

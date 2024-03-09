@@ -35,3 +35,8 @@ Route::put('users/edit/{id}',[UserController::class,'edit']);
 Route::delete('users/edit/{id}',[UserController::class,'delete']);
 ///
 
+///DELETE USER USING API
+Route::patch('users/edit/{id}',[UserController::class,'patch']);
+///
+
+

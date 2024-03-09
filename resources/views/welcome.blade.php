@@ -47,6 +47,9 @@
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 http://127.0.0.1:8000/api/delete/{id}
                             </p>
+                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                http://127.0.0.1:8000/api/patch/{id}
+                            </p>
                         </div>
                     </div>
                 </div>
